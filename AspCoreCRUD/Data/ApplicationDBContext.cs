@@ -13,5 +13,14 @@ namespace AspCoreCRUD.Data
         }
 
         public DbSet<Empleados> Empleados { get; set; }
+
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<Rol>().HasData(
+                   new Rol { id = 1, Nombre = "Administrador" },
+                   new Rol { id = 2, Nombre = "Vendedor" }
+            );
+        }
+        public DbSet<Rol> Rol { get; set; }
     }
 }
